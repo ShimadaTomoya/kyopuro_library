@@ -14,3 +14,7 @@ def factorial(n)
   tmp
 end
 
+# 組み合わせ（nCr）
+def combination(n,r)
+  factorial(n) / (factorial(r)*(factorial(n-r)))
+end
