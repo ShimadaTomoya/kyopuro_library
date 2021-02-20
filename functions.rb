@@ -18,3 +18,13 @@ end
 def combination(n,r)
   factorial(n) / (factorial(r)*(factorial(n-r)))
 end
+
+# 基数変換
+# nをkisuu進数としてみたときの値を10進数で返す
+def kisuu_henkan(n, kisuu)
+  ans = 0
+  n.to_s.split('').reverse.each.with_index do |i, ks|
+    ans += i.to_i * (kisuu**ks)
+  end
+  ans
+end
