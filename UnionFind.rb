@@ -22,7 +22,7 @@ class UnionFind
   end
 
   # xとyが同じ集合に属するか否か
-  def same(x, y)
+  def same?(x, y)
     root(x) == root(y)
   end
 
