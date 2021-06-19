@@ -15,7 +15,7 @@ def factorial(n)
 end
  
 # 組み合わせ（nCr）
-def combination(n,r)
+def number_of_combinations(n,r)
   num = 1
   for i in 1..r do
     num = num * (n-i+1) / i
