@@ -13,10 +13,14 @@ def factorial(n)
   n.downto(2) {|i| tmp *= i}
   tmp
 end
-
+ 
 # 組み合わせ（nCr）
 def combination(n,r)
-  factorial(n) / (factorial(r)*(factorial(n-r)))
+  num = 1
+  for i in 1..r do
+    num = num * (n-i+1) / i
+  end
+  num
 end
 
 # 基数変換
