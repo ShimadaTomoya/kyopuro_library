@@ -7,15 +7,37 @@ class Graph
 
   def initialize(nodes_of_number)
     @graph = Array.new(nodes_of_number) { Array.new }
-    @seen = Array.new
+    @seen = Array.new(nodes_of_number,false)
   end
 
-  # aからbの向きでnodeを結ぶ
+  # aからbの向き(a->b)でnodeを結ぶ
+  # ※無向グラフの場合は互いにlinkする
   def link(a,b)
     @graph[a] << b
   end
 
+  # aからbまでの最短距離（いくつの辺を通過するか）
+  # bfs
+  def cost_of(a,b)
+    que = []
+    seen = @seen.clone
+    seen[a] = 0
+    que.push(a)
+    while (que.length > 0)
+      i = que.shift
+      @graph[i].each do |j|
+        unless (seen[j])
+          seen[j] = seen[i] + 1
+          que.push(j)
+        end
+      end
+    end
+    return seen[b]
+    # return seen # aから到達可能なnodeを調べる際など、seenを返して欲しい時もあるよな
+  end
+
 =begin
+  private
   def dfs(v)
     return if (@seen[v])
     @seen[v] = true
@@ -25,4 +47,3 @@ class Graph
   end
 =end
 end
-
